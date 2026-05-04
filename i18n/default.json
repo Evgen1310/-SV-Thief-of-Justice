@@ -1,0 +1,56 @@
+{
+  // Config
+  "config.section.Schedule.name": "Schedule Settings",
+
+  "config.AfterClaireEvent.name": "After the first showing",
+  "config.AfterClaireEvent.description": "Include film only after viewing Claire's 14 hearts event.",
+  "config.AfterClaireEvent.values.true": "Yes",
+  "config.AfterClaireEvent.values.false": "No",
+
+  "config.ShowSeason.name": "Movie Season",
+  "config.ShowSeason.description": "Select the season when the movie will be available.",
+
+  "config.ShowSeason.values.spring": "Spring",
+  "config.ShowSeason.values.summer": "Summer",
+  "config.ShowSeason.values.fall": "Fall",
+  "config.ShowSeason.values.winter": "Winter",
+
+  // Movie poster
+  "Poster.Name": "'Thief of Justice'",
+
+  // Film title and description
+  "Film.Title": "Thief of Justice",
+  "Film.Description": "A crime thriller about a daring thief who risks everything to expose a conspiracy to control people's minds!",
+
+  // Movie reactions
+  // Claire
+  "Claire.Movies.01": "It brings back memories of the premiere...$1",
+  "Claire.Movies.02": "..!$7",
+  "Claire.Movies.03": "I'm quite proud of how this turned out.$1",
+
+  // Olivia (wouldn't it be strange if she loved the movie at the first showing but didn't enjoy it when watching it again? (olivia doesnt like action movies))
+  "Olivia.Movies.01": "Let's head in early to get good seats, @.$0",
+  "Olivia.Movies.02": "She looks breathtaking in her costume.$1",
+  "Olivia.Movies.03": "I'm not usually into this genre, but I was pleasantly surprised by this one.$3",
+
+  // Jas
+  "Jas.Movies.01": "I'm so glad Aunt Marnie let me come to this movie!$0",
+  "Jas.Movies.02": "Uncle Shane says the same thing about the town.$1",
+  "Jas.Movies.03": "I want to be a thief of justice too when I grow up!$1",
+
+  // Emily
+  "Emily.Movies.02": "Go Claire! Woo!$1",
+
+  // Movie scenes
+  "Claire.14hearts3.14": "'THE THIEF OF JUSTICE'",
+  "Claire.14hearts3.15": "Zaza City, a place of crime and corruption...",
+  "Claire.14hearts3.16": "But one woman has been stealing the secrets of the rich and powerful to protect the city.",
+  "Claire.14hearts3.17": "Claire Whitley is: The Thief of Justice",
+  "Claire.14hearts3.18": "When an increasing number of people change to become unresponsive to outside stimuli, the thief is worried...",
+  "Claire.14hearts3.19": "Is it all coincidence? Or are more menacing powers at play here?",
+  "Claire.14hearts3.20": "A rumor leads her to investigate the biggest company in town: Jajo corporations.",
+  "Claire.14hearts3.21": "Under the cover of darkness, she sneaks into their head offices. She manages to avoid detection and uncovers a sinister plot:",
+  "Claire.14hearts3.22": "Jajo plans to brainwash people with the help of a new recipe in their popular soda production line.",
+  "Claire.14hearts3.23": "The change that has occurred in some citizens is Jajo's latest experiment to perfect the formula. The thief steals the information.",
+  "Claire.14hearts3.24": "Leaking it to the public leads to Jajo's downfall. The city is safe once more..."
+}

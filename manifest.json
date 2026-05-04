@@ -1,0 +1,16 @@
+{
+    "Name": "Thief of Justice",
+    "Author": "Evgen1310",
+    "Version": "1.0.0",
+    "Description": "Film which was shown in Clair`s 14 hearts event.",
+    "UniqueID": "Evgen1310.ClaireFilm.CP",
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    },
+    "Dependencies": [
+      {
+        "UniqueID": "FlashShifter.StardewValleyExpandedCP",
+        "IsRequired": false
+      },
+    ]
+}

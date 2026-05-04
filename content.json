@@ -1,0 +1,400 @@
+{
+    "Format": "2.8.0",
+    "ConfigSchema": {
+        "AfterClaireEvent": {
+            "AllowValues": "true, false",
+            "Default": "true",
+            "AllowBlank": false,
+            "Section": "Schedule"
+        },
+        //I tried to do multiple seasons but "AllowMultiple" produced "fall, Winter" instead of ["fall", "Winter"] so only the first season was applied :(.
+        "ShowSeason": {
+            "AllowValues": "spring, summer, fall, winter",
+            "Default": "fall",
+            "AllowBlank": false,
+            "Section": "Schedule"
+        }
+    },
+    "DynamicTokens": [
+        {
+            "Name": "showmovie",
+            "Value": "false"
+        },
+        {
+            "Name": "showmovie",
+            "Value": "true",
+            "When": {
+                "AfterClaireEvent": false
+            }
+        },
+        {
+            "Name": "showmovie",
+            "Value": "true",
+            "When": {
+                "AfterClaireEvent": true,
+                "HasSeenEvent |contains=4269703": true
+            }
+        }
+   ],
+    "Changes": [
+        // Load data
+        // Poster
+        {
+            "Action": "Load",
+            "Target": "{{ModId}}/poster",
+            "FromFile": "assets/movie_poster.png"
+        },
+        // Tilesheet
+        {
+            "Action": "Load",
+            "Target": "{{ModId}}/tilesheet",
+            "FromFile": "assets/tilesheet_{{Language}}.png",
+            "When": {
+                "HasFile:assets/tilesheet_{{Language}}.png": true
+            }
+        },
+        {
+            "Action": "Load", 
+            "Target": "{{ModId}}/tilesheet",
+            "FromFile": "assets/tilesheet.png",
+            "When": {
+                "HasFile:assets/tilesheet_{{Language}}.png": false
+            }
+        },
+
+        // Add poster to furnitures
+        {
+            "Action": "EditData",
+            "Target": "Data/Furniture",
+            "Entries": {
+                "{{ModId}}_ClairePoster": "{{ModId}}_ClairePoster/painting/1 2/1 2/1/400/-1/{{i18n:Poster.Name}}/0/{{ModId}}\\poster"
+            }
+        },
+
+        // Add movie
+        {
+            "Action": "EditData",
+            "Target": "Data/Movies",
+            "When": {
+                "showmovie": "true"
+            },
+            "Entries": {
+                "Evgen1310.ClaireFilm": {
+                    "ID": "Evgen1310.ClaireFilm",
+                    "Seasons": [ "{{ShowSeason}}" ],
+                    "Texture": "{{ModId}}/tilesheet",
+                    "SheetIndex": 0,
+                    "Title": "{{i18n:Film.Title}}",
+                    "Description": "{{i18n:Film.Description}}",
+                    "Tags": [
+                        "art",
+                        "action"
+                    ],
+                    "CranePrizes": [
+                        {
+                        "Rarity": 1,
+                        "Condition": null,
+                        "Id": "MoviePoster",
+                        "ItemId": "{{ModId}}_ClairePoster",
+                        "RandomItemId": null,
+                        "MaxItems": null,
+                        "MinStack": -1,
+                        "MaxStack": -1,
+                        "Quality": -1,
+                        "ObjectInternalName": null,
+                        "ObjectDisplayName": null,
+                        "ObjectColor": null,
+                        "ToolUpgradeLevel": -1,
+                        "IsRecipe": false,
+                        "StackModifiers": null,
+                        "StackModifierMode": "Stack",
+                        "QualityModifiers": null,
+                        "QualityModifierMode": "Stack",
+                        "ModData": null,
+                        "PerItemCondition": null
+                        }
+                    ],
+                    "ClearDefaultCranePrizeGroups": [],
+                    "Scenes": [
+                        {
+                            "Image": 0,
+                            "Music": "overcast",
+                            "Sound": null,
+                            "MessageDelay": 0,
+                            "Script": "/playMusic Overcast/pause 3000",
+                            "Text": "{{i18n:Claire.14hearts3.14}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_0"
+                        },
+                        {
+                            "Image": 1,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1500,
+                            "Script": "/pause 1000",
+                            "Text": "{{i18n:Claire.14hearts3.15}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_1"
+                        },
+                        {
+                            "Image": 1,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1000,
+                            "Script": null,
+                            "Text": "{{i18n:Claire.14hearts3.16}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_2"
+                        },
+                        {
+                            "Image": 2,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1000,
+                            "Script": "/pause 1000",
+                            "Text": "{{i18n:Claire.14hearts3.17}}",
+                            "Shake": false,
+                            "ResponsePoint": "TOJIntroduction",
+                            "ID": "claire0_3"
+                        },
+                        {
+                            "Image": 3,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 2000,
+                            "Script": "/pause 1000/playSound shadowpeep",
+                            "Text": "{{i18n:Claire.14hearts3.18}}",
+                            "Shake": false,
+                            "ResponsePoint": "TOJTown",
+                            "ID": "claire0_4"
+                        },
+                        {
+                            "Image": 3,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 0,
+                            "Script": "/pause 1000/playSound shadowpeep",
+                            "Text": "{{i18n:Claire.14hearts3.19}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_5"
+                        },
+                        {
+                            "Image": 4,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1000,
+                            "Script": "/pause 1000",
+                            "Text": "{{i18n:Claire.14hearts3.20}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_6"
+                        },
+                        {
+                            "Image": 5,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1000,
+                            "Script": "/playSound trashcan",
+                            "Text": "{{i18n:Claire.14hearts3.21}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_7"
+                        },
+                        {
+                            "Image": 6,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1000,
+                            "Script": "/playSound coldSpell",
+                            "Text": "{{i18n:Claire.14hearts3.22}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_8"
+                        },
+                        {
+                            "Image": 6,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 0,
+                            "Script": "/pause 500/playSound breakingGlass/pause 500/playSound doorOpen/pause 500",
+                            "Text": null,
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_9"
+                        },
+                        {
+                            "Image": 7,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 0,
+                            "Script": "/pause 500/playSound keyboardTyping",
+                            "Text": "{{i18n:Claire.14hearts3.23}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_10"
+                        },
+                        {
+                            "Image": 8,
+                            "Music": null,
+                            "Sound": null,
+                            "MessageDelay": 1500,
+                            "Script": "/pause 2000/playSound secret1",
+                            "Text": "{{i18n:Claire.14hearts3.24}}",
+                            "Shake": false,
+                            "ResponsePoint": null,
+                            "ID": "claire0_11"
+                        }
+                    ]
+                }
+            }
+        },
+
+        // Edit movie reactions (thanks to TheLimeyDragon)
+        
+        // Love
+        // Claire
+        {
+            "Action": "EditData",
+            "Target": "Data/MoviesReactions",
+            "TargetField": [ "Claire", "Reactions" ],
+            "Entries": {
+                "{{ModId}}_reaction_0": {
+                    "Tag": "Evgen1310.ClaireFilm",
+                    "Response": "love",
+                    "Whitelist": [],
+                    "SpecialResponses": {
+                        "BeforeMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Claire.Movies.01}}"
+                        },
+                        "DuringMovie": {
+                            "ResponsePoint": "TOJIntroduction",
+                            "Script": "",
+                            "Text": "{{i18n:Claire.Movies.02}}"
+                        },
+                        "AfterMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Claire.Movies.03}}"
+                        }
+                    },
+                    "ID": "{{ModId}}_reaction_0"
+                }
+            },
+            "MoveEntries": [
+                {"ID": "{{ModId}}_reaction_0", "ToPosition": "Top"}
+            ]
+        },
+
+        // Olivia
+        {
+            "Action": "EditData",
+            "Target": "Data/MoviesReactions",
+            "TargetField": [ "Olivia", "Reactions" ],
+            "Entries": {
+                "{{ModId}}_reaction_0": {
+                    "Tag": "Evgen1310.ClaireFilm",
+                    "Response": "love",
+                    "Whitelist": [],
+                    "SpecialResponses": {
+                        "BeforeMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Olivia.Movies.01}}"
+                        },
+                        "DuringMovie": {
+                            "ResponsePoint": "TOJIntroduction",
+                            "Script": "",
+                            "Text": "{{i18n:Olivia.Movies.02}}"
+                        },
+                        "AfterMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Olivia.Movies.03}}"
+                        }
+                    },
+                    "ID": "{{ModId}}_reaction_0"
+                }
+            },
+            "MoveEntries": [
+                {"ID": "{{ModId}}_reaction_0", "ToPosition": "Top"}
+            ]
+        },
+
+        // Like
+        // Jas
+        {
+            "Action": "EditData",
+            "Target": "Data/MoviesReactions",
+            "TargetField": [ "Jas", "Reactions" ],
+            "Entries": {
+                "{{ModId}}_reaction_0": {
+                    "Tag": "Evgen1310.ClaireFilm",
+                    "Response": "like",
+                    "Whitelist": [],
+                    "SpecialResponses": {
+                        "BeforeMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Jas.Movies.01}}"
+                        },
+                        "DuringMovie": {
+                            "ResponsePoint": "TOJTown",
+                            "Script": "",
+                            "Text": "{{i18n:Jas.Movies.02}}"
+                        },
+                        "AfterMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "{{i18n:Jas.Movies.03}}"
+                        }
+                    },
+                    "ID": "{{ModId}}_reaction_0"
+                }
+            },
+            "MoveEntries": [
+                {"ID": "{{ModId}}_reaction_0", "ToPosition": "Top"}
+            ]
+        },
+
+        // Emily
+        {
+            "Action": "EditData",
+            "Target": "Data/MoviesReactions",
+            "TargetField": [ "Emily", "Reactions" ],
+            "Entries": {
+                "{{ModId}}_reaction_0": {
+                    "Tag": "Evgen1310.ClaireFilm",
+                    "Response": "like",
+                    "Whitelist": [],
+                    "SpecialResponses": {
+                        "BeforeMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "[LocalizedText Strings\\MovieReactions:Emily_like_BeforeMovie]"
+                        },
+                        "DuringMovie": {
+                            "ResponsePoint": "TOJIntroduction",
+                            "Script": "",
+                            "Text": "{{i18n:Emily.Movies.02}}"
+                        },
+                        "AfterMovie": {
+                            "ResponsePoint": null,
+                            "Script": "",
+                            "Text": "[LocalizedText Strings\\MovieReactions:Emily_like_AfterMovie]"
+                        }
+                    },
+                    "ID": "{{ModId}}_reaction_0"
+                }
+            },
+            "MoveEntries": [
+                {"ID": "{{ModId}}_reaction_0", "ToPosition": "Top"}
+            ]
+        }
+    ]
+}
