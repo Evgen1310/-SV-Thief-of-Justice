@@ -34,6 +34,25 @@
                 "AfterClaireEvent": true,
                 "HasSeenEvent |contains=4269703": true
             }
+        },
+        {
+            "Name": "showmovie",
+            "Value": "true",
+            "When": {
+                "AfterClaireEvent": true,
+                "HasMod |contains=FlashShifter.StardewValleyExpandedCP": "false"
+            }
+        },
+        {
+            "Name": "sve_reactions",
+            "Value": "false"
+        },
+        {
+            "Name": "sve_reactions",
+            "Value": "true",
+            "When": {
+                "HasMod |contains=FlashShifter.StardewValleyExpandedCP": "true"
+            }
         }
    ],
     "Changes": [
@@ -261,6 +280,9 @@
             "Action": "EditData",
             "Target": "Data/MoviesReactions",
             "TargetField": [ "Claire", "Reactions" ],
+            "When": {
+                "sve_reactions": "true"
+            },
             "Entries": {
                 "{{ModId}}_reaction_0": {
                     "Tag": "Evgen1310.ClaireFilm",
@@ -296,6 +318,9 @@
             "Action": "EditData",
             "Target": "Data/MoviesReactions",
             "TargetField": [ "Olivia", "Reactions" ],
+            "When": {
+                "sve_reactions": "true"
+            },
             "Entries": {
                 "{{ModId}}_reaction_0": {
                     "Tag": "Evgen1310.ClaireFilm",
